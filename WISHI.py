@@ -104,7 +104,7 @@ def initiate_delete_item(message):
     wishes = wish_bot.get_wishes(user_id)
     
     if not wishes:
-        bot.reply_to(message, "У вас поки немає бажань.")
+        bot.reply_to(message, "Ваш вішліст порожній.")
         return
     
     markup = types.InlineKeyboardMarkup()
@@ -156,9 +156,6 @@ def handle_user_input(message):
 def view_items(message):
     response = wish_bot.view_wishes(message.from_user.id)
     bot.reply_to(message, response)
-
-rand_var = 10
-
 
 @bot.message_handler(commands=['my_id'])
 def get_my_id(message):
