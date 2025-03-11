@@ -1,0 +1,34 @@
+name: Deploy Bot
+
+on:
+  push:
+    branches:
+      - main  # Автоматичний запуск при пуші у main
+
+jobs:
+  test_and_deploy:
+    runs-on: ubuntu-latest  # Виконання на Linux
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3  # Завантажує код репозиторію
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"  # Встановлює Python 3.10
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv  # Створює віртуальне середовище
+          source venv/bin/activate  # Активація venv
+          pip install -r requirements.txt  # Встановлення залежностей
+          pip install pytest pytest-cov  # Встановлення pytest та модуля для перевірки покриття коду
+
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          pytest tests/ --cov=bot  # Запускає тести та вимірює покриття коду
+
+      - name: Deploy (замініть на реальний деплой)
+        run: echo "Deploying bot..."нн
+        
