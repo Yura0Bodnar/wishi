@@ -25,6 +25,8 @@ pipeline {
             parallel {
                 stage('Code Linting') {
                     steps {
+                        sh 'pip install flake8 black'
+                        sh 'bash -c "source venv/bin/activate'
                         sh 'flake8'
                         sh 'black --check .'
                     }
