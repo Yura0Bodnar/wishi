@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh """
                 ${PYTHON_ENV} -m venv venv
-                bash -c "source .venv/bin/activate && pip install --upgrade pip && pip install -r ${REQUIREMENTS_FILE}"
+                bash -c "source venv/bin/activate && pip install --upgrade pip && pip install -r ${REQUIREMENTS_FILE}"
                 """
             }
         }
