@@ -27,14 +27,14 @@ pipeline {
             parallel {
                 stage('Code Linting') {
                     steps {
-                        sh 'python3 flake8'
-                        sh 'python3 black --check .'
+                        sh '. venv/bin/activate && flake8'   // Активуємо venv перед запуском flake8
+                        sh '. venv/bin/activate && black --check .'
                     }
                 }
 
                 stage('Security Check') {
                     steps {
-                        sh 'python3 bandit WISHI.py'
+                        sh '. venv/bin/activate && bandit WISHI.py'
                     }
                 }
             }
