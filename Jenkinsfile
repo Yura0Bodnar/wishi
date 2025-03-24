@@ -17,20 +17,6 @@ pipeline {
                 sh """
                 ${PYTHON_ENV} -m venv venv
                 . venv/bin/activate
-                echo "Перевірка Python:"
-                which python3  # Виведе шлях до Python у віртуальному середовищі
-                echo "Перевірка pip:"
-                which pip  # Виведе шлях до pip у віртуальному середовищ
-                pip install -r ${REQUIREMENTS_FILE}
-                """
-            }
-        }
-    /*
-        stage('Install Dependencies') {
-            steps {
-                sh """
-               . venv/bin/activate
-                pip install --upgrade pip
                 pip install -r ${REQUIREMENTS_FILE}
                 """
             }
@@ -51,7 +37,7 @@ pipeline {
                     }
                 }
             }
-        } */
+        }
     }
 
     post {
