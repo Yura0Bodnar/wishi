@@ -18,6 +18,7 @@ pipeline {
                 ${PYTHON_ENV} -m venv venv
                 . venv/bin/activate
                 pip install -r ${REQUIREMENTS_FILE}
+                pip install flake8 bandit black
                 """
             }
         }
