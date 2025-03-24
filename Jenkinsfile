@@ -16,7 +16,22 @@ pipeline {
             steps {
                 sh """
                 ${PYTHON_ENV} -m venv venv
-                bash -c "source venv/bin/activate && pip install --upgrade pip && pip install -r ${REQUIREMENTS_FILE}"
+                . venv/bin/activate
+                echo "Перевірка Python:"
+                which python3  # Виведе шлях до Python у віртуальному середовищі
+                echo "Перевірка pip:"
+                which pip  # Виведе шлях до pip у віртуальному середовищ
+                pip install -r ${REQUIREMENTS_FILE}
+                """
+            }
+        }
+    /*
+        stage('Install Dependencies') {
+            steps {
+                sh """
+               . venv/bin/activate
+                pip install --upgrade pip
+                pip install -r ${REQUIREMENTS_FILE}
                 """
             }
         }
@@ -25,8 +40,6 @@ pipeline {
             parallel {
                 stage('Code Linting') {
                     steps {
-                        sh 'pip install flake8 black'
-                        sh 'bash -c "source venv/bin/activate'
                         sh 'flake8'
                         sh 'black --check .'
                     }
@@ -38,7 +51,7 @@ pipeline {
                     }
                 }
             }
-        }
+        } */
     }
 
     post {
