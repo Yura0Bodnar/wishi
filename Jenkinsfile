@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh """
                 ${PYTHON_ENV} -m venv venv
-                source venv/bin/activate
+                . venv/bin/activate
                 pip install -r ${REQUIREMENTS_FILE}
                 """
             }
