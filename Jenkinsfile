@@ -27,14 +27,14 @@ pipeline {
             parallel {
                 stage('Code Linting') {
                     steps {
-                        sh 'flake8'
-                        sh 'black --check .'
+                        sh 'python3 flake8'
+                        sh 'python3 black --check .'
                     }
                 }
 
                 stage('Security Check') {
                     steps {
-                        sh 'bandit WISHI.py'
+                        sh 'python3 bandit WISHI.py'
                     }
                 }
             }
