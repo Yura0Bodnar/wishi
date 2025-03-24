@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_TOKEN = os.getenv('API_TOKEN')
-MONGODB_URI = os.getenv('MONGODB_URI')
+API_TOKEN = os.getenv("API_TOKEN")
+MONGODB_URI = os.getenv("MONGODB_URI")
 
 bot = telebot.TeleBot(API_TOKEN, parse_mode="Markdown")  # Використовуємо Markdown
 
