@@ -12,12 +12,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/yourusername/yourrepo.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh """
